@@ -28,11 +28,19 @@ class _DicePageState extends State<DicePage> {
 
   int leftDiceNumber = 1;
   int rightDiceNumber = 1;
+  var message = "Click on dices to change.If you get 6-6 dice, you will win !";
 
   void diceChanger() {
     setState(() {
       leftDiceNumber = Random().nextInt(6) + 1;
       rightDiceNumber = Random().nextInt(6) + 1;
+
+      if (leftDiceNumber == 6 && rightDiceNumber == 6) {
+        message = "You are awesome";
+      }else {
+        message = "Never give up !";
+      }
+
     });
   }
 
@@ -43,9 +51,10 @@ class _DicePageState extends State<DicePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-              "Click on dices to change !",
+              "$message",
+              textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 22,
                 color: Colors.white,
                 fontWeight: FontWeight.bold
               ),
